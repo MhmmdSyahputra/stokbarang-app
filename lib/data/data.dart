@@ -1,15 +1,18 @@
+import 'dart:math';
+
 List listCategory = [
-  {'gambar': 'assets/images/Image Kosmetik.png', 'namaCate': 'kosmetik'},
-  {'gambar': 'assets/images/Image Makanan.png', 'namaCate': 'makanan pokok'},
-  {'gambar': 'assets/images/Image Stationary.png', 'namaCate': 'stationary'},
+  {'gambar': 'assets/images/Image Kosmetik.png', 'namaCate': 'Kosmetik'},
+  {'gambar': 'assets/images/Image Makanan.png', 'namaCate': 'Makanan Pokok'},
+  {'gambar': 'assets/images/Image Stationary.png', 'namaCate': 'Stationary'},
 ];
 
 List listProduct = [
   {
     'barcode': '745364',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/lipstik.png',
     'namaProduct': 'Lipstik Matte',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Lipstik matte dengan berbagai pilihan warna menarik. Tampil cantik dan percaya diri dengan lipstik matte ini. Formula matte yang tahan lama membuat bibir terlihat indah sepanjang hari. Cocok untuk berbagai acara, dari sehari-hari hingga acara istimewa. Dapatkan hasil tampilan sempurna dengan lipstik ini. Tersedia dalam kemasan praktis dan elegan.',
     'exp': '2024-12-31',
@@ -19,9 +22,10 @@ List listProduct = [
   },
   {
     'barcode': '745890',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/mascara.png',
     'namaProduct': 'Maskara Waterproof',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Maskara tahan air untuk bulu mata lentik dan tebal. Dapatkan bulu mata yang tampak lebih panjang, lebat, dan lentik dengan maskara ini. Formula waterproof yang tahan lama dan anti-smudge membuatnya cocok untuk segala situasi, bahkan di bawah cuaca ekstrem. Mudah diaplikasikan dan tidak menggumpal. Hasilkan tampilan mata yang dramatis dan menawan dengan maskara waterproof ini.',
     'exp': '2025-06-30',
@@ -31,9 +35,10 @@ List listProduct = [
   },
   {
     'barcode': '6452109',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/fondation.png',
     'namaProduct': 'Foundation Flawless',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Foundation untuk tampilan kulit sempurna dan tahan lama. Formula ringan yang mudah menyatu dengan kulit, memberikan hasil yang halus dan bebas noda. Foundation ini memberikan daya coverage yang baik, menyamarkan pori-pori dan ketidaksempurnaan kulit. Dengan daya tahan lama, Anda bisa percaya diri tampil cantik sepanjang hari.',
     'exp': '2024-09-30',
@@ -43,9 +48,10 @@ List listProduct = [
   },
   {
     'barcode': '539846',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/eyeshadow.png',
     'namaProduct': 'Eyeshadow Palette',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Palet eyeshadow dengan berbagai pilihan warna. Ciptakan tampilan mata yang beragam, dari yang natural hingga yang dramatis, dengan palet ini. Eyeshadow yang pigmented dan mudah di-blend, memberikan hasil akhir yang profesional. Kemasan palet yang kompak dan praktis membuatnya mudah dibawa bepergian. Buat tampilan mata yang memesona dengan eyeshadow palette ini.',
     'exp': '2024-11-30',
@@ -55,9 +61,10 @@ List listProduct = [
   },
   {
     'barcode': '123474',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Blush On.png',
     'namaProduct': 'Blush On',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Blush on untuk memberikan efek pipi merona. Tersedia dalam berbagai pilihan warna yang memberikan sentuhan segar pada wajah. Blush on ini memberikan hasil akhir yang alami dan tahan lama. Gunakan kuas blush on untuk mengaplikasikan dengan mudah. Buat tampilan wajah yang cerah dan bersinar dengan blush on ini.',
     'exp': '2023-12-31',
@@ -67,9 +74,10 @@ List listProduct = [
   },
   {
     'barcode': '125098',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Makeup Remover.png',
     'namaProduct': 'Makeup Remover',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Pembersih wajah dan makeup yang lembut. Bersihkan wajah dari kotoran dan makeup dengan lembut tanpa membuat kulit kering. Formula yang tidak lengket membantu mengangkat makeup, bahkan yang waterproof. Diperkaya dengan bahan alami untuk merawat dan menjaga kelembapan kulit. Dapatkan wajah segar dan bersih dengan makeup remover ini.',
     'exp': '2025-10-31',
@@ -79,9 +87,10 @@ List listProduct = [
   },
   {
     'barcode': '456456',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Highlighter.png',
     'namaProduct': 'Highlighter Stick',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Highlighter dalam bentuk stick untuk tampilan glowing. Aplikasikan pada area wajah yang ingin Anda sorot untuk memberikan efek kilau dan tampilan yang menawan. Highlighter ini memberikan efek cahaya yang cantik pada wajah Anda. Cocok digunakan di berbagai acara, dari sehari-hari hingga acara malam. Dapatkan tampilan yang glowing dengan highlighter stick ini.',
     'exp': '2024-08-31',
@@ -91,9 +100,10 @@ List listProduct = [
   },
   {
     'barcode': '178906',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Eyeliner Gel.png',
     'namaProduct': 'Eyeliner Gel',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Eyeliner gel untuk tampilan mata yang tajam. Formula gel yang tahan lama dan tidak luntur membuat garis mata Anda tetap rapi sepanjang hari. Kuas aplikator yang presisi memudahkan Anda untuk membuat garis mata yang sempurna. Tersedia dalam berbagai warna untuk variasi tampilan. Dapatkan tampilan mata yang dramatis dengan eyeliner gel ini.',
     'exp': '2023-11-30',
@@ -103,9 +113,10 @@ List listProduct = [
   },
   {
     'barcode': '128769',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Facial.png',
     'namaProduct': 'Facial Sheet Mask',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Masker wajah dalam bentuk lembaran untuk perawatan kulit. Diperkaya dengan berbagai nutrisi dan bahan alami yang baik untuk kulit Anda. Masker ini membantu memberikan kelembapan dan menyegarkan kulit wajah. Cocok digunakan sebagai bagian dari rutinitas perawatan kulit Anda. Dapatkan kulit wajah yang sehat dan bersinar dengan facial sheet mask ini.',
     'exp': '2025-09-30',
@@ -115,9 +126,10 @@ List listProduct = [
   },
   {
     'barcode': '122679',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Lip Balm.png',
     'namaProduct': 'Lip Balm',
-    'category': 'kosmetik',
+    'category': 'Kosmetik',
     'deskripsi':
         'Lip balm untuk melembapkan bibir kering. Formula lembut dan melembapkan membantu merawat bibir yang pecah-pecah. Dapatkan bibir lembut dan kenyal dengan rutinitas penggunaan lip balm ini. Cocok untuk digunakan sebelum mengaplikasikan lipstik matte agar bibir terlihat lebih mulus. Buat bibir Anda tetap lembut dan cantik dengan lip balm ini.',
     'exp': '2023-10-31',
@@ -127,9 +139,10 @@ List listProduct = [
   },
   {
     'barcode': '122321',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Beras Premium.png',
     'namaProduct': 'Beras Premium',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Beras berkualitas tinggi dengan butiran penuh.',
     'exp': '2024-12-31',
     'tglMasuk': '2023-07-15',
@@ -138,9 +151,10 @@ List listProduct = [
   },
   {
     'barcode': '556745',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Telur Ayam Kampung.png',
     'namaProduct': 'Telur Ayam Kampung',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Telur ayam kampung segar dan berkualitas.',
     'exp': '2023-07-31',
     'tglMasuk': '2023-07-01',
@@ -149,9 +163,10 @@ List listProduct = [
   },
   {
     'barcode': '226789',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Minyak Goreng.png',
     'namaProduct': 'Minyak Goreng',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Minyak goreng berkualitas untuk masakan sehari-hari.',
     'exp': '2025-09-30',
     'tglMasuk': '2023-06-10',
@@ -160,9 +175,10 @@ List listProduct = [
   },
   {
     'barcode': '232378',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Tepung Terigu.png',
     'namaProduct': 'Tepung Terigu',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Tepung terigu untuk berbagai resep kue dan masakan.',
     'exp': '2024-11-30',
     'tglMasuk': '2023-03-20',
@@ -171,9 +187,10 @@ List listProduct = [
   },
   {
     'barcode': '456570',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Gula Pasir.png',
     'namaProduct': 'Gula Pasir',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Gula pasir untuk manisnya hidangan.',
     'exp': '2023-12-31',
     'tglMasuk': '2023-07-05',
@@ -182,9 +199,10 @@ List listProduct = [
   },
   {
     'barcode': '456890',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Mie Instan.png',
     'namaProduct': 'Mie Instan',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Mie instan untuk makanan praktis dan cepat.',
     'exp': '2025-10-31',
     'tglMasuk': '2023-02-15',
@@ -193,9 +211,10 @@ List listProduct = [
   },
   {
     'barcode': '112376',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Kacang Hijau.png',
     'namaProduct': 'Kacang Hijau',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Kacang hijau kering untuk makanan dan bubur.',
     'exp': '2024-08-31',
     'tglMasuk': '2023-07-08',
@@ -204,9 +223,10 @@ List listProduct = [
   },
   {
     'barcode': '234908',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Jagung Manis.png',
     'namaProduct': 'Jagung Manis',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Jagung manis segar untuk makanan dan snack.',
     'exp': '2023-11-30',
     'tglMasuk': '2023-04-05',
@@ -215,9 +235,10 @@ List listProduct = [
   },
   {
     'barcode': '237687',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Ketan Putih.png',
     'namaProduct': 'Ketan Putih',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Ketan putih untuk hidangan tradisional.',
     'exp': '2025-09-30',
     'tglMasuk': '2023-01-10',
@@ -226,9 +247,10 @@ List listProduct = [
   },
   {
     'barcode': '345876',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Lentil.png',
     'namaProduct': 'Lentil',
-    'category': 'makanan pokok',
+    'category': 'Makanan Pokok',
     'deskripsi': 'Lentil kering untuk hidangan kaya protein.',
     'exp': '2023-10-31',
     'tglMasuk': '2023-06-01',
@@ -237,9 +259,10 @@ List listProduct = [
   },
   {
     'barcode': '567895',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Pensil 2B.png',
     'namaProduct': 'Pensil 2B',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Pensil 2B dengan kualitas grafit tinggi.',
     'exp': '2025-12-31',
     'tglMasuk': '2023-07-15',
@@ -248,9 +271,10 @@ List listProduct = [
   },
   {
     'barcode': '4540912',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Buku Catatan A5.png',
     'namaProduct': 'Buku Catatan A5',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Buku catatan A5 dengan cover keras.',
     'exp': '2024-07-31',
     'tglMasuk': '2023-07-01',
@@ -259,9 +283,10 @@ List listProduct = [
   },
   {
     'barcode': '336689',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Pulpen Warna.png',
     'namaProduct': 'Pulpen Warna',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Pulpen berbagai warna untuk menulis dan mewarnai.',
     'exp': '2024-09-30',
     'tglMasuk': '2023-06-10',
@@ -270,9 +295,10 @@ List listProduct = [
   },
   {
     'barcode': '456678',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Highlighter Set.png',
     'namaProduct': 'Highlighter Set',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Set highlighter dengan berbagai warna.',
     'exp': '2024-11-30',
     'tglMasuk': '2023-03-20',
@@ -281,9 +307,10 @@ List listProduct = [
   },
   {
     'barcode': '997756',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Sticky Notes.png',
     'namaProduct': 'Sticky Notes',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Sticky notes dalam berbagai bentuk dan ukuran.',
     'exp': '2023-12-31',
     'tglMasuk': '2023-07-05',
@@ -292,9 +319,10 @@ List listProduct = [
   },
   {
     'barcode': '567609',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Rautan Pensil.png',
     'namaProduct': 'Rautan Pensil',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Rautan pensil dengan kualitas tajam.',
     'exp': '2025-10-31',
     'tglMasuk': '2023-02-15',
@@ -303,9 +331,10 @@ List listProduct = [
   },
   {
     'barcode': '126578',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Kuas Lukis.png',
     'namaProduct': 'Kuas Lukis',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Kuas lukis dengan bulu halus dan berkualitas.',
     'exp': '2024-08-31',
     'tglMasuk': '2023-07-08',
@@ -314,9 +343,10 @@ List listProduct = [
   },
   {
     'barcode': '2354674',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Pensil Warna.png',
     'namaProduct': 'Pensil Warna',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Pensil warna untuk menggambar dan mewarnai.',
     'exp': '2023-11-30',
     'tglMasuk': '2023-04-05',
@@ -325,9 +355,10 @@ List listProduct = [
   },
   {
     'barcode': '450098',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Stapler Mini.png',
     'namaProduct': 'Stapler Mini',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Stapler mini untuk penggunaan ringkas.',
     'exp': '2025-09-30',
     'tglMasuk': '2023-01-10',
@@ -336,9 +367,10 @@ List listProduct = [
   },
   {
     'barcode': '679000',
+    'pemasok': getPemasok(),
     'gambar': 'assets/images/product/Tipe-X Mini.png',
     'namaProduct': 'Tipe-X Mini',
-    'category': 'stationary',
+    'category': 'Stationary',
     'deskripsi': 'Korek tipe-x mini untuk pengoreksian tepat.',
     'exp': '2023-10-31',
     'tglMasuk': '2023-06-01',
@@ -346,3 +378,23 @@ List listProduct = [
     'stok': 8,
   },
 ];
+
+List listPemasok = [
+  {'name': 'CV Bumi Waras'},
+  {'name': 'Unilever'},
+  {'name': 'Stock'},
+  {'name': 'PT Heinz ABC Indonesia'},
+  {'name': 'PT Indofood Sukses Makmur Tbk'},
+  {'name': 'PT Indofood Sukses Makmur Tbk'},
+  {'name': 'Stock'},
+];
+
+String getPemasok() {
+  Set uniquePemasok = listPemasok.map((item) => item['name']).toSet();
+  List uniquePemasokList = uniquePemasok.toList();
+
+  Random random = Random();
+  int randomIndex = random.nextInt(uniquePemasokList.length);
+
+  return uniquePemasokList[randomIndex];
+}

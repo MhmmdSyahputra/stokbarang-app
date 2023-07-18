@@ -38,6 +38,15 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  void showSnackbar(BuildContext context, pesan, Color color) {
+    final snackBar = SnackBar(
+      content: Text('${pesan}'),
+      duration: Duration(seconds: 3),
+      backgroundColor: color,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   getFromGallery() async {
     XFile? pickedFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
@@ -75,10 +84,10 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         title: Text(
           '${isupdate ? 'Update' : 'Profile'}',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, color: ColorPalette.hintColor),
         ),
         backgroundColor: ColorPalette.primaryColor,
-        automaticallyImplyLeading: false,
         centerTitle: true,
         actions: [
           isupdate
@@ -97,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              primary: Colors.red,
+                              primary: ColorPalette.textColor,
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10))),
                     ),
@@ -105,27 +114,38 @@ class _ProfilePageState extends State<ProfilePage> {
                       padding: const EdgeInsets.symmetric(horizontal: 3),
                       child: ElevatedButton(
                           onPressed: () {
-                            provIdUser.updateUser(
-                                user.id,
-                                UserModel(
-                                    id: user.id,
-                                    profil: gambar,
-                                    username: newUsername.text,
-                                    email: newEmail.text,
-                                    noHp: newPhone.text,
-                                    gender: genderValue,
-                                    dateOfBirth: dateofBirth.toString(),
-                                    password: user.password));
-                            setState(() {
-                              isupdate = false;
-                            });
+                            if (newUsername.text != '' && newEmail.text != '') {
+                              provIdUser.updateUser(
+                                  user.id,
+                                  UserModel(
+                                      id: user.id,
+                                      profil: gambar,
+                                      username: newUsername.text,
+                                      email: newEmail.text,
+                                      noHp: newPhone.text,
+                                      gender: genderValue,
+                                      dateOfBirth: dateofBirth.toString(),
+                                      password: user.password));
+                              setState(() {
+                                isupdate = false;
+                              });
+                              showSnackbar(
+                                  context,
+                                  'Data anda berhasil di edit',
+                                  ColorPalette.primaryDarkColor);
+                              return;
+                            }
+                            showSnackbar(
+                                context,
+                                'Username/Email tidak boleh kosong!',
+                                ColorPalette.textColor);
                           },
                           child: Text('Save'),
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              primary: Colors.green,
+                              primary: ColorPalette.primaryDarkColor,
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10))),
                     ),
@@ -144,7 +164,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          primary: Colors.orange,
+                          primary: ColorPalette.primaryDarkColor,
                           padding: const EdgeInsets.symmetric(horizontal: 10))),
                 )
         ],
@@ -227,7 +247,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         child: Text(
                                       'Username',
                                       style: TextStyle(
-                                          color: ColorPalette.primaryDarkColor),
+                                          color: ColorPalette.textColor),
                                     )),
                                     Expanded(
                                         child: TextField(
@@ -246,7 +266,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         child: Text(
                                       'Email',
                                       style: TextStyle(
-                                          color: ColorPalette.primaryDarkColor),
+                                          color: ColorPalette.textColor),
                                     )),
                                     Expanded(
                                         child: TextField(
@@ -265,7 +285,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         child: Text(
                                       'Phone',
                                       style: TextStyle(
-                                          color: ColorPalette.primaryDarkColor),
+                                          color: ColorPalette.textColor),
                                     )),
                                     Expanded(
                                         child: TextField(
@@ -284,7 +304,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         child: Text(
                                       'Gender',
                                       style: TextStyle(
-                                          color: ColorPalette.primaryDarkColor),
+                                          color: ColorPalette.textColor),
                                     )),
                                     Expanded(
                                         child: Container(
@@ -316,7 +336,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         child: Text(
                                       'Date Of Birth',
                                       style: TextStyle(
-                                          color: ColorPalette.primaryDarkColor),
+                                          color: ColorPalette.textColor),
                                     )),
                                     Expanded(
                                         child: DateTimePicker(
@@ -394,31 +414,51 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: new Column(
                               children: <Widget>[
                                 ListTile(
-                                  leading: Text("Username"),
+                                  leading: Text(
+                                    "Username",
+                                    style: TextStyle(
+                                        color: ColorPalette.textColor),
+                                  ),
                                   textColor: ColorPalette.primaryDarkColor,
                                   trailing: Text('${user.username}'),
                                   tileColor: Color(0xFFEEEEEE),
                                 ),
                                 ListTile(
-                                  leading: Text("Email"),
+                                  leading: Text(
+                                    "Email",
+                                    style: TextStyle(
+                                        color: ColorPalette.textColor),
+                                  ),
                                   textColor: ColorPalette.primaryDarkColor,
                                   trailing: Text('${user.email}'),
                                   tileColor: Color(0xFFEEEEEE),
                                 ),
                                 ListTile(
-                                  leading: Text("Phone"),
+                                  leading: Text(
+                                    "Phone",
+                                    style: TextStyle(
+                                        color: ColorPalette.textColor),
+                                  ),
                                   textColor: ColorPalette.primaryDarkColor,
                                   trailing: Text('${cekNull(user.noHp)}'),
                                   tileColor: Color(0xFFEEEEEE),
                                 ),
                                 ListTile(
-                                  leading: Text("Gender"),
+                                  leading: Text(
+                                    "Gender",
+                                    style: TextStyle(
+                                        color: ColorPalette.textColor),
+                                  ),
                                   textColor: ColorPalette.primaryDarkColor,
                                   trailing: Text('${cekNull(user.gender)}'),
                                   tileColor: Color(0xFFEEEEEE),
                                 ),
                                 ListTile(
-                                  leading: Text("Date Of Birth"),
+                                  leading: Text(
+                                    "Date Of Birth",
+                                    style: TextStyle(
+                                        color: ColorPalette.textColor),
+                                  ),
                                   textColor: ColorPalette.primaryDarkColor,
                                   trailing:
                                       Text('${cekNull(user.dateOfBirth)}'),

@@ -87,12 +87,14 @@ class ReportsPage extends StatelessWidget {
                           Expanded(
                               child: Text(
                             '${data['namaProduct']}',
-                            style: TextStyle(color: ColorPalette.primaryColor),
+                            style:
+                                TextStyle(color: ColorPalette.primaryDarkColor),
                           )),
                           Expanded(
                               child: Text(
-                            '${data['namaProduct']}',
-                            style: TextStyle(color: ColorPalette.primaryColor),
+                            '${data['pemasok']}',
+                            style:
+                                TextStyle(color: ColorPalette.primaryDarkColor),
                           )),
                         ],
                       ),
@@ -108,12 +110,16 @@ class ReportsPage extends StatelessWidget {
                           Expanded(
                               child: Column(
                             children: [
-                              Text('Sold'),
+                              Text(
+                                'Sold',
+                                style: TextStyle(color: ColorPalette.textColor),
+                              ),
                               Row(
                                 children: [
                                   Icon(
                                     Icons.fire_truck,
                                     size: 25,
+                                    color: ColorPalette.textColor,
                                   ),
                                   SizedBox(
                                     width: 30,
@@ -122,7 +128,7 @@ class ReportsPage extends StatelessWidget {
                                     '${data['stok']} Items',
                                     style: TextStyle(
                                         fontSize: 15,
-                                        color: ColorPalette.primaryColor),
+                                        color: ColorPalette.primaryDarkColor),
                                   )
                                 ],
                               ),
@@ -131,12 +137,16 @@ class ReportsPage extends StatelessWidget {
                           Expanded(
                               child: Column(
                             children: [
-                              Text('Stok'),
+                              Text(
+                                'Stok',
+                                style: TextStyle(color: ColorPalette.textColor),
+                              ),
                               Row(
                                 children: [
                                   Icon(
                                     Icons.inventory,
                                     size: 25,
+                                    color: ColorPalette.textColor,
                                   ),
                                   SizedBox(
                                     width: 30,
@@ -145,7 +155,7 @@ class ReportsPage extends StatelessWidget {
                                     '${data['stok']} Items',
                                     style: TextStyle(
                                         fontSize: 15,
-                                        color: ColorPalette.primaryColor),
+                                        color: ColorPalette.primaryDarkColor),
                                   )
                                 ],
                               ),

@@ -28,6 +28,12 @@ class _LoginPageState extends State<LoginPage> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
+  bool _passwordVisible = true;
+
+  void initState() {
+    _passwordVisible = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     final provLogin = Provider.of<UsersProvider>(context);
@@ -141,9 +147,15 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         controller: password,
-                        obscureText: mounted,
-                        decoration: const InputDecoration(
-                          suffixIcon: Icon(Icons.visibility_outlined),
+                        obscureText: _passwordVisible,
+                        decoration: InputDecoration(
+                          suffixIcon: InkWell(
+                              onTap: () => setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  }),
+                              child: Icon(_passwordVisible
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined)),
                           suffixIconColor: Colors.white,
                           label: Text(
                             'Password',
@@ -212,12 +224,14 @@ class _LoginPageState extends State<LoginPage> {
                               provLogin.userDoLogin(dataUser.id);
                               Navigator.pushNamed(context, "/homePage");
                             } else {
-                              showSnackbar(
-                                  context, 'User Tidak Ditemukan!', Colors.red);
+                              showSnackbar(context, 'User Tidak Ditemukan!',
+                                  ColorPalette.textColor);
                             }
                           } else {
-                            showSnackbar(context,
-                                'Input Box Masih ada yang kosong!', Colors.red);
+                            showSnackbar(
+                                context,
+                                'Input Box Masih ada yang kosong!',
+                                ColorPalette.textColor);
                           }
                         },
                         // autofocus: false,

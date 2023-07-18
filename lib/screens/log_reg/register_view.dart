@@ -6,12 +6,20 @@ import 'package:aplikasi/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   static const routeName = "/registerPage";
 
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _inputUsername = TextEditingController();
+
   final TextEditingController _inputEmail = TextEditingController();
+
   final TextEditingController _inputPassword = TextEditingController();
+
   final TextEditingController _inputRepeatPassword = TextEditingController();
 
   void showSnackbar(BuildContext context, pesan, Color color) {
@@ -21,6 +29,14 @@ class RegisterPage extends StatelessWidget {
       backgroundColor: color,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  bool _passwordVisible = true;
+  bool _passwordRepeatVisible = true;
+
+  void initState() {
+    _passwordVisible = true;
+    _passwordRepeatVisible = true;
   }
 
   @override
@@ -130,12 +146,19 @@ class RegisterPage extends StatelessWidget {
                       ),
                       TextFormField(
                         controller: _inputPassword,
-                        decoration: const InputDecoration(
+                        obscureText: _passwordVisible,
+                        decoration: InputDecoration(
                           label: Text(
                             'Password',
                             style: TextStyle(color: Color(0xFFECEFF1)),
                           ),
-                          suffixIcon: Icon(Icons.visibility_outlined),
+                          suffixIcon: InkWell(
+                              onTap: () => setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  }),
+                              child: Icon(_passwordVisible
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined)),
                           suffixIconColor: Colors.white,
                           icon: Icon(Icons.password),
                           iconColor: Colors.white,
@@ -154,7 +177,6 @@ class RegisterPage extends StatelessWidget {
                           ),
                         ),
                         style: TextStyle(color: Colors.white),
-                        obscureText: true,
                         autofocus: false,
                       ),
                       Padding(
@@ -162,12 +184,20 @@ class RegisterPage extends StatelessWidget {
                       ),
                       TextFormField(
                         controller: _inputRepeatPassword,
-                        decoration: const InputDecoration(
+                        obscureText: _passwordRepeatVisible,
+                        decoration: InputDecoration(
                           label: Text(
-                            ' Confirm Password',
+                            'Confirm Password',
                             style: TextStyle(color: Color(0xFFECEFF1)),
                           ),
-                          suffixIcon: Icon(Icons.visibility_outlined),
+                          suffixIcon: InkWell(
+                              onTap: () => setState(() {
+                                    _passwordRepeatVisible =
+                                        !_passwordRepeatVisible;
+                                  }),
+                              child: Icon(_passwordRepeatVisible
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined)),
                           suffixIconColor: Colors.white,
                           icon: Icon(Icons.password),
                           iconColor: Colors.white,
@@ -186,7 +216,6 @@ class RegisterPage extends StatelessWidget {
                           ),
                         ),
                         style: TextStyle(color: Colors.white),
-                        obscureText: true,
                         autofocus: false,
                       ),
                       Column(
@@ -218,7 +247,7 @@ class RegisterPage extends StatelessWidget {
                                   showSnackbar(
                                       context,
                                       'Konfirmasi Password tidak sesuai!',
-                                      Colors.red);
+                                      ColorPalette.textColor);
                                   return;
                                 }
                                 prov.register(UserModel(
@@ -227,13 +256,15 @@ class RegisterPage extends StatelessWidget {
                                   email: _inputEmail.text,
                                   password: _inputPassword.text,
                                 ));
-                                showSnackbar(context,
-                                    'Registrasi Akun Berhasil!', Colors.green);
+                                showSnackbar(
+                                    context,
+                                    'Registrasi Akun Berhasil!',
+                                    ColorPalette.primaryDarkColor);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginPage()));
                               } else {
                                 showSnackbar(context, 'Harap isi semua field!',
-                                    Colors.red);
+                                    ColorPalette.textColor);
                               }
 
                               // Navigator.pushNamed(context, Activation.routeName);

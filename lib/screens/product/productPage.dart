@@ -66,7 +66,7 @@ class _ProductPageState extends State<ProductPage> {
                               '${data['namaProduct']}',
                               style: TextStyle(
                                   fontSize: 17,
-                                  color: ColorPalette.primaryColor,
+                                  color: ColorPalette.textColor,
                                   fontWeight: FontWeight.bold),
                             ),
                           ],

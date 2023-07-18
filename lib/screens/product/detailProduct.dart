@@ -39,21 +39,23 @@ class DetailProductPage extends StatelessWidget {
                       Text(
                         data['namaProduct'],
                         style: TextStyle(
-                            fontSize: 25, color: ColorPalette.primaryColor),
+                            fontSize: 25, color: ColorPalette.primaryDarkColor),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Deskripsi',
-                        style: TextStyle(fontSize: 19, color: Colors.grey),
+                        style: TextStyle(
+                            fontSize: 19, color: ColorPalette.textColor),
                       ),
                       SizedBox(
                         height: 5,
                       ),
                       Text(
                         '${data['deskripsi']}',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(
+                            fontSize: 15, color: ColorPalette.textColor),
                       ),
                     ],
                   ),
@@ -69,13 +71,13 @@ class DetailProductPage extends StatelessWidget {
                           child: Text(
                         'Exp : ${data['exp']}',
                         style: TextStyle(
-                            color: ColorPalette.primaryColor, fontSize: 17),
+                            color: ColorPalette.primaryDarkColor, fontSize: 17),
                       )),
                       Container(
                           child: Text(
-                        'Tanggal Masuk product : ${data['tglMasuk']}',
+                        'Tanggal Masuk Product : ${data['tglMasuk']}',
                         style: TextStyle(
-                            color: ColorPalette.primaryColor, fontSize: 17),
+                            color: ColorPalette.primaryDarkColor, fontSize: 17),
                       )),
                       SizedBox(
                         height: 15,
@@ -87,6 +89,7 @@ class DetailProductPage extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.fire_truck,
+                                color: ColorPalette.textColor,
                                 size: 30,
                               ),
                               SizedBox(
@@ -94,7 +97,9 @@ class DetailProductPage extends StatelessWidget {
                               ),
                               Text(
                                 '${data['stok']} Items',
-                                style: TextStyle(fontSize: 17),
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    color: ColorPalette.textColor),
                               )
                             ],
                           )),
@@ -103,6 +108,7 @@ class DetailProductPage extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.inventory,
+                                color: ColorPalette.textColor,
                                 size: 30,
                               ),
                               SizedBox(
@@ -110,7 +116,9 @@ class DetailProductPage extends StatelessWidget {
                               ),
                               Text(
                                 '${data['sold']} Items',
-                                style: TextStyle(fontSize: 17),
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    color: ColorPalette.textColor),
                               )
                             ],
                           )),

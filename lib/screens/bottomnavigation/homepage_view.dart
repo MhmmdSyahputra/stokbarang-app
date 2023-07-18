@@ -99,6 +99,7 @@ class HomePage extends StatelessWidget {
                             height: 100,
                             width: 150,
                             decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(data['gambar']))),
@@ -108,13 +109,15 @@ class HomePage extends StatelessWidget {
                             children: [
                               Text(
                                 'Data Kategori',
-                                style: TextStyle(fontSize: 17),
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    color: ColorPalette.textColor),
                               ),
                               Text(
                                 '${data['namaCate']}',
                                 style: TextStyle(
-                                  fontSize: 17,
-                                ),
+                                    fontSize: 17,
+                                    color: ColorPalette.textColor),
                               ),
                             ],
                           ))

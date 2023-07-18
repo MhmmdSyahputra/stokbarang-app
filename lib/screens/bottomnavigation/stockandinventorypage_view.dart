@@ -86,7 +86,11 @@ class StockandInventoryPage extends StatelessWidget {
                         children: [
                           Column(
                             children: [
-                              Text('${data['namaProduct']}'),
+                              Text(
+                                '${data['namaProduct']}',
+                                style: TextStyle(
+                                    color: ColorPalette.primaryDarkColor),
+                              ),
                               SizedBox(
                                 height: 10,
                               ),
@@ -112,8 +116,18 @@ class StockandInventoryPage extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('${data['stok']} Items'),
-                                    Icon(Icons.edit_square),
+                                    Text(
+                                      '${data['stok']} Items',
+                                      style: TextStyle(
+                                          color: ColorPalette.textColor),
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    Icon(
+                                      Icons.edit_square,
+                                      color: ColorPalette.textColor,
+                                    ),
                                   ],
                                 ),
                               ],
