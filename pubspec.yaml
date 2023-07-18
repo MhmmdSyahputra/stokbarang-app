@@ -1,0 +1,46 @@
+name: aplikasi
+description: A new Flutter project.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.1
+
+environment:
+  sdk: ">=2.19.4 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  image_picker:
+  provider: ^6.0.5
+  date_time_picker: ^2.1.0
+  uuid: ^3.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/product/
+
+  fonts:
+    - family: Sansita
+      fonts:
+        - asset: assets/fonts/Sansita-Black.ttf
+        - asset: assets/fonts/Sansita-Bold.ttf
+          weight: 200
+    - family: barcode39
+      fonts:
+        - asset: assets/fonts/LibreBarcode39Text-Regular.ttf
+          weight: 700
+  #
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
